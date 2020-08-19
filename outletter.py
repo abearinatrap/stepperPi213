@@ -6,7 +6,7 @@ import time,sys
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 #gpio pins to control stepper motor
-GPIO.setup(8, GPIO.OUT)
+GPIO.setup(8, GPIO.OUT, initial=0)
 
 
 if __name__ == "__main__":
@@ -23,7 +23,7 @@ if __name__ == "__main__":
             print("off")
         else:
             print("Bad input")
-        GPIO.cleanup()
+        
     except KeyboardInterrupt:
         GPIO.cleanup()   
 
