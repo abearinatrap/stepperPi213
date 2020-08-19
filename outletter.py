@@ -11,5 +11,10 @@ GPIO.setup(8, GPIO.OUT)
 def setGPIO(modeN):
     GPIO.output(8,modeN)
 if __name__ == "__main__":
-    setGPIO(int(sys.argv[1]))
+    if sys.argv[1]=="1":
+        setGPIO(GPIO.HIGH)
+    elif sys.argv[1]=="0":
+        setGPIO(GPIO.LOW)
+    else:
+        print("Bad input")
     GPIO.cleanup()
