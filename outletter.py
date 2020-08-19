@@ -15,9 +15,11 @@ if __name__ == "__main__":
     try:
         if statearg==1:
             GPIO.output(8,1)
+            sleep(0.5)
             print("on")
         elif statearg==0:
             GPIO.output(8,0)
+            sleep(0.5)
             print("off")
         else:
             print("Bad input")
