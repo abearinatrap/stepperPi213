@@ -13,10 +13,10 @@ if __name__ == "__main__":
     statearg=int(sys.argv[1])
     print(statearg)
     try:
-        if statearg=="1":
+        if statearg==1:
             GPIO.output(8,1)
             print("on")
-        elif statearg=="0":
+        elif statearg==0:
             GPIO.output(8,0)
             print("off")
         else:
