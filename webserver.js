@@ -25,8 +25,10 @@ function handler (req, res) { //create server
   });
 }
 var stepperRun = spawn('python',['stepperSocket.py','0']);
+var lightRun= spawn('python',['outletter.py','0']);
 io.sockets.on('connection', function (socket) {// WebSocket Connection
-  var lightvalue = 0; //static variable for current status
+  var steppervalue = 0; //static variable for current status
+  var lightvalue=0;
   /**
   pushButton.watch(function (err, value) { //Watch for hardware interrupts on pushButton
     if (err) { //if an error
@@ -36,13 +38,19 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     lightvalue = value;
     socket.emit('light', lightvalue); //send button status to client
   });*/
-  socket.emit('light',lightvalue);
-  socket.on('light', function(data) { //get light switch status from client
+  socket.emit('stepper',steppervalue);
+  socket.on('stepper', function(data) { //get stepper switch status from client
     stepperRun.kill();
-    lightvalue = data;
-    console.log(lightvalue);
+    steppervalue = data;
+    console.log("stepper to "+steppervalue);
     //exec("python stepperSocket.py");
-    stepperRun=spawn('python',['stepperSocket.py',lightvalue.toString()]);
+    stepperRun=spawn('python',['stepperSocket.py',steppervalue.toString()]);
+  });
+  socket.on('light', function(data) {
+    lightRun.kill();
+    lightvalue=data;
+    console.log("light switch to "+lightvalue);
+    lightRun=spawn('python',['outletter.py',lightvalue.toString()]);
   });
 });
 
