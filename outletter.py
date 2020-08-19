@@ -10,10 +10,12 @@ GPIO.setup(8, GPIO.OUT)
 
 
 if __name__ == "__main__":
+    statearg=sys.argv[1]
+    print(statearg)
     try:
-        if sys.argv[1]=="1":
+        if statearg=="1":
             GPIO.output(8,1)
-        elif sys.argv[1]=="0":
+        elif statearg=="0":
             GPIO.output(8,0)
         else:
             print("Bad input")
