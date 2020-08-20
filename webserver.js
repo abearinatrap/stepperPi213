@@ -51,6 +51,7 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     lightvalue=data;
     console.log("light switch to "+lightvalue);
     lightRun=spawn('python',['outletter.py',lightvalue.toString()]);
+    //yep
   });
 });
 
