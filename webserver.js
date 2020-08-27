@@ -39,6 +39,7 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     socket.emit('light', lightvalue); //send button status to client
   });*/
   socket.emit('stepper',steppervalue);
+  socket.emit('stepper',lightvalue);
   socket.on('stepper', function(data) { //get stepper switch status from client
     stepperRun.kill();
     steppervalue = data;
