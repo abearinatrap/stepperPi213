@@ -18,6 +18,7 @@
           });
           var lightbox = document.getElementById("light");
           lightbox.addEventListener("change", function(){
+            //poggers it works
             socket.emit("light", (this.checked ? 1 : 0));
           });
         });
