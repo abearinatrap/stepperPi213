@@ -18,7 +18,7 @@
           });
           var lightbox = document.getElementById("light");
           lightbox.addEventListener("change", function(){
-            socket.emit("stepper", Number(this.value))
+            socket.emit("light", (this.checked ? 1 : 0));
           });
         });
 
@@ -29,7 +29,7 @@
 
         socket.on('light', function (data) {
           document.getElementById("light").value=data;
-          socket.emit("stepper",data);
+          socket.emit("light",data);
         });
     </script>
   </body>
